@@ -42,24 +42,10 @@ myApp.controller("UserUpdateCtr", ['$scope', '$resource', 'User', '$location', '
       });
     }
   };
-  
-  $scope.addAddress = function(){
-    $scope.user.addresses.push({street1: '', street2: '', city: '', state: '', country: '', zipcode: '' })
-  }
-
-  $scope.removeAddress = function(index, user){
-    var address = user.addresses[index];
-    if(address.id){
-      address._destroy = true;
-    }else{
-      user.addresses.splice(index, 1);
-    }
-  };
-
 }]);
 
 myApp.controller("UserAddCtr", ['$scope', '$resource', 'Users', '$location', function($scope, $resource, Users, $location) {
-  $scope.user = {addresses: [{street1: '', street2: '', city: '', state: '', country: '', zipcode: '' }]}
+  $scope.user = {first_name: '', last_name:'', email: '', phone: ''}
   $scope.save = function () {
     if ($scope.userForm.$valid){
       Users.create({user: $scope.user}, function(){
@@ -69,20 +55,6 @@ myApp.controller("UserAddCtr", ['$scope', '$resource', 'Users', '$location', fun
       });
     }
   }
-
-  $scope.addAddress = function(){
-    $scope.user.addresses.push({street1: '', street2: '', city: '', state: '', country: '', zipcode: '' })
-  }
-
-  $scope.removeAddress = function(index, user){
-    var address = user.addresses[index];
-    if(address.id){
-      address._destroy = true;
-    }else{
-      user.addresses.splice(index, 1);
-    }
-  };
-
 }]);
 
 
